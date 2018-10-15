@@ -8,7 +8,8 @@ Base = declarative_base()
 
 association_table = Table('association', Base.metadata,
     Column('user_id', Integer, ForeignKey('users.id')),
-    Column('shul_id', Integer, ForeignKey('shuls.id'))
+    Column('shul_id', Integer, ForeignKey('shuls.id')),
+    # ENUM for association type (gabbai, leiner)
 )
 
 
@@ -42,7 +43,7 @@ class Weeks(Base):
     __tablename__ = 'weeks'
 
     id = Column(Integer, primary_key=True)
-    date = Column(Date) # not yet sure how to do this
+    date = Column(Date)
     shul_id = Column(Integer, ForeignKey('shuls.id'))
     parasha = Column(String(50))
     full = Column(Integer, ForeignKey('users.id'), nullable=True)
