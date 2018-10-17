@@ -20,8 +20,7 @@ Wouldn't it be great if there were an app that:
 
 This repo is set up to be used with [pipenv](https://pipenv.readthedocs.io/en/latest/).
 
-- Install pipenv 
+- Install pipenv
   - For the time being, you may need to use the workaround at [https://github.com/pypa/pipenv/issues/2924#issuecomment-427351356]() to get around a pip/pipenv issue.
 - `pipenv install` to create a virtualenv and install all dependencies
-- `FLASK_APP=main.py pipenv run flask run` to run the application in dev mode
-
+- `FLASK_APP=main.py FLASK_ENV=development pipenv run flask run` to run the application in dev mode with debugger on
