@@ -36,8 +36,8 @@ class Shuls(Base):
     state = Column(String(2))
     zip = Column(String(10))
     calendar_type = Column(String(8))
-    shabbos_signup = Column(Boolean, default=True)
-    yomtov_signup = Column(Boolean, default=False)
+    shabbos_signup = Column(String(3))
+    yomtov_signup = Column(String(3))
     visibility = Column(String(10))
     accessibility = Column(String(10))
     user = relationship(
