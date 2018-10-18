@@ -35,6 +35,11 @@ class Shuls(Base):
     city = Column(String(25))
     state = Column(String(2))
     zip = Column(String(10))
+    calendar_type = Column(String(8))
+    shabbos_signup = Column(Boolean, default=True)
+    yomtov_signup = Column(Boolean, default=False)
+    visibility = Column(String(10))
+    accessibility = Column(String(10))
     user = relationship(
         'Users',
         secondary=association_table,
