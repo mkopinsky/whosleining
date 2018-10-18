@@ -45,7 +45,7 @@ class Shuls(Base):
         secondary=association_table,
         back_populates='shul'
     )
-    weeks = relationship('Weeks')
+
 
 
 class Weeks(Base):
@@ -54,6 +54,7 @@ class Weeks(Base):
     id = Column(Integer, primary_key=True)
     date = Column(Date)
     shul_id = Column(Integer, ForeignKey('shuls.id'))
+    shuls = relationship('Shuls')
     parasha = Column(String(50))
     full = Column(Integer, ForeignKey('users.id'), nullable=True)
     rishon = Column(Integer, ForeignKey('users.id'), nullable=True)
