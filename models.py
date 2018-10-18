@@ -31,6 +31,10 @@ class Shuls(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(200))
+    address = Column(String(200))
+    city = Column(String(25))
+    state = Column(String(2))
+    zip = Column(String(10))
     user = relationship(
         'Users',
         secondary=association_table,
