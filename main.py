@@ -67,6 +67,21 @@ def googleLogin():
     assert resp.ok, resp.text
     return "You are now logged in"
 
+@app.route("/logout")
+def logout():
+    if login_session['provider'] == 'google':
+        try:
+            token = blueprint.token["access_token"]
+            resp = google.post(
+                "https://accounts.google.com/o/oauth2/revoke",
+                params={"token": token},
+                headers={"Content-Type": "application/x-www-form-urlencoded"}
+            )
+        except:
+            return "Logout was unsuccessful"
+        login_session.clear()
+    return redirect(url_for('home'))
+
 
 @app.route('/')
 def home():
