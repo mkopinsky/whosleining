@@ -28,6 +28,14 @@ blueprint = make_google_blueprint(
 )
 app.register_blueprint(blueprint, url_prefix="/login")
 
+@app.route("/google/login")
+def googleLogin():
+    if not google.authorized:
+        return redirect(url_for("google.login"))
+    resp = google.get("/oauth2/v2/userinfo")
+    assert resp.ok, resp.text
+    return "You are now logged in"
+
 
 @app.route('/')
 def home():
