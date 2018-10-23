@@ -8,6 +8,7 @@ from models import Base, Users, Shuls, Weeks
 from flask_dance.contrib.google import make_google_blueprint, google
 
 app = Flask(__name__)
+app.secret_key = "supersekrit"
 
 engine = create_engine('sqlite:///leining.db')
 Base.metadata.bind = engine
