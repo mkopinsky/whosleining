@@ -15,6 +15,28 @@ DBSession = sessionmaker(bind=engine)
 session = DBSession()
 
 
+# helper function - create user and return user id
+def createUser(login_session):
+    newUser = Users(name=login_session['name'], email=login_session['email'])
+    session.add(newUser)
+    session.commit()
+    user = session.query(Users).filter_by(email=login_session['email']).one()
+    return user.id
+
+# helper function - take in user id and return user object
+def getUserInfo(user_id):
+    user = session.query(Users).filter_by(id=user_id).one()
+    return user
+
+# helper function - take in user email and return user id
+def getUserID(email):
+    try:
+        user = session.query(Users).filter_by(email=email).one()
+        return user.id
+    except:
+        return None
+
+
 # Flask_Dance code for Google sign-in
 blueprint = make_google_blueprint(
     client_id="427424805365-ss8sjd94ocgts504dd6d3ahe3335ea1h.apps.googleuser\
