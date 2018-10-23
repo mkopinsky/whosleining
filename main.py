@@ -40,8 +40,7 @@ def getUserID(email):
 
 # Flask_Dance code for Google sign-in
 blueprint = make_google_blueprint(
-    client_id="427424805365-ss8sjd94ocgts504dd6d3ahe3335ea1h.apps.googleuser\
-        content.com",
+    client_id="427424805365-ss8sjd94ocgts504dd6d3ahe3335ea1h.apps.googleusercontent.com",
     client_secret="VvRDm1HDvhfHPr1XmTMSU8W5",
     scope=[
         "https://www.googleapis.com/auth/plus.me", "https://www.googleapis.com/auth/userinfo.email"
