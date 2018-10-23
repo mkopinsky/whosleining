@@ -1,8 +1,11 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
+from flask import session as login_session
 
 from sqlalchemy import create_engine, asc
 from sqlalchemy.orm import sessionmaker
 from models import Base, Users, Shuls, Weeks
+
+from flask_dance.contrib.google import make_google_blueprint, google
 
 app = Flask(__name__)
 
