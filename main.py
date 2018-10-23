@@ -55,6 +55,15 @@ def googleLogin():
     if not google.authorized:
         return redirect(url_for("google.login"))
     resp = google.get("/oauth2/v2/userinfo")
+    login_session['provider'] = 'google'
+    login_session['name'] = resp.json()['name']
+    login_session['email'] = resp.json()['email']
+    # check to see if user exists, if not then create one
+    user_id = getUserID(login_session['email'])
+    if not user_id:
+        user_id = createUser(login_session)
+    # store user_id in session
+    login_session['user_id'] = user_id
     assert resp.ok, resp.text
     return "You are now logged in"
 
