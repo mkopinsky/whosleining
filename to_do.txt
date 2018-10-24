@@ -1,0 +1,7 @@
+
+debug javascript for disabling hidden inputs
+
+
+for production:
+change redirect url for oauth, both in app and google console
+create actual flask secret key
