@@ -3,7 +3,11 @@
 {% block content %}
   <section>
     <div>
-      Welcome to whosleining.com! To add a shul or manage an existing shul, please log in
+      {% if session['name'] %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('googleLogin') }}">Login</a>
+      {% endif %}
     </div>
   </section>
 {% endblock %}
