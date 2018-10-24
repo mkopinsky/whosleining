@@ -10,7 +10,7 @@ from flask_dance.contrib.google import make_google_blueprint, google
 app = Flask(__name__)
 app.secret_key = "supersekrit"
 
-engine = create_engine('sqlite:///leining.db')
+engine = create_engine('sqlite:///leining.db?check_same_thread=False')
 Base.metadata.bind = engine
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
