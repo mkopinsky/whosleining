@@ -102,6 +102,8 @@ def shul_info():
             visibility=request.form['visibility'],
             accessibility=request.form['accessibility']
         )
+        # add current user object to user attribute of newShul instance
+        newShul.user.append(getUserInfo(login_session['user_id']))
         session.add(newShul)
         session.commit()
         return 'Shul added successfully'
