@@ -1,6 +1,8 @@
 
 debug javascript for disabling hidden inputs
 
+I don't think the association table is working, not sure why
+
 
 for production:
 change redirect url for oauth, both in app and google console
