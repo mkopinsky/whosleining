@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash
 from flask import session as login_session
 
 from sqlalchemy import create_engine, asc
@@ -106,6 +106,7 @@ def shul_info():
         newShul.user.append(getUserInfo(login_session['user_id']))
         session.add(newShul)
         session.commit()
-        return 'Shul added successfully'
+        flash('Shul added successfully')
+        return redirect(url_for('home'))
     else:
         return render_template('shulInfo.html')
