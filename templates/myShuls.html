@@ -4,7 +4,7 @@
   {% for shuls in user.shul %}
     <ul>
       <li>
-        {{ shuls.name }}
+        <a href="{{ url_for('signup', shul_id=shuls.id) }}">{{ shuls.name }}</a>
       </li>
     </ul>
   {% endfor %}
