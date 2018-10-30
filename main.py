@@ -115,3 +115,8 @@ def shul_info():
 def my_shuls():
     user = getUserInfo(login_session['user_id'])
     return render_template('myShuls.html', user=user)
+
+@app.route('/<shul_id>/signup/', methods=['GET', 'POST'])
+def signup(shul_id):
+    shul = session.query(Shuls).filter_by(id=shul_id).one()
+    return render_template('signup.html', shul=shul)
