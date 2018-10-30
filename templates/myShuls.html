@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for shuls in user.shul %}
+    <ul>
+      <li>
+        {{ shuls.name }}
+      </li>
+    </ul>
+  {% endfor %}
+{% endblock %}

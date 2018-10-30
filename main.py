@@ -110,3 +110,8 @@ def shul_info():
         return redirect(url_for('home'))
     else:
         return render_template('shulInfo.html')
+
+@app.route('/my-shuls/')
+def my_shuls():
+    user = getUserInfo(login_session['user_id'])
+    return render_template('myShuls.html', user=user)

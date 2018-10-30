@@ -18,5 +18,12 @@
         {% endif %}
       {% endwith %}
     </div>
+    <div>
+      {% if session['name'] %}
+        <p>
+          <a href="{{ url_for('my_shuls') }}" >My shuls</a>
+        </p>
+      {% endif %}
+    </div>
   </section>
 {% endblock %}
