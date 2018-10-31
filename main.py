@@ -97,7 +97,6 @@ def shul_info():
             state=request.form['state'],
             zip=request.form['zip'],
             calendar_type=request.form['calendar-type'],
-            shabbos_signup=request.form['shabbos'],
             yomtov_signup=request.form['yom-tov'],
             visibility=request.form['visibility'],
             accessibility=request.form['accessibility']
