@@ -4,17 +4,22 @@ var $calendar_type = $('#calendar-type');
 var yomtov;
 var israel;
 
-if ($('#yom-tov').prop('checked')) {
-  yomtov = 'on';
-} else {
-  yomtov = 'off';
-}
+$(function() {
+  if (yt === 'on') {
+    yomtov = 'on';
+  } else {
+    yomtov = 'off';
+  }
+})
 
-if ($calendar_type.val() === 'Israel') {
-  israel = 'on';
-} else {
-  israel = 'off';
-}
+$(function() {
+  if (cal === 'Israel') {
+    israel = 'on';
+  } else {
+    israel = 'off';
+  }
+})
+
 
 var hebcal = $.getJSON(
   'https://www.hebcal.com/hebcal/?v=1&cfg=json&year=now&month=x&s=on&maj=' + yomtov + '&i=' + israel

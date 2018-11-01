@@ -10,3 +10,10 @@
     </div>
   </section>
 {% endblock %}
+
+{% block js %}
+  <script type='text/javascript'>
+    var yt = {{ shul.yomtov_signup }};
+    var cal = {{ shul.calendar_type }};
+  </script>
+{% endblock %}
