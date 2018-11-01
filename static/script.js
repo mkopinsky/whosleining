@@ -1,12 +1,14 @@
 var $parshiot = $('#parshiot');
 var $calendar_type = $('#calendar-type');
 
+// cal was defined in signup.html
 if (cal === 'Israel'){
   var israel = 'on'
 } else {
   var israel = 'off'
 }
 
+// yt was defined in signup.html
 var hebcal = $.getJSON(
   'https://www.hebcal.com/hebcal/?v=1&cfg=json&year=now&month=x&s=on&maj=' + yt + '&i=' + israel
 ).done(function(data) {
