@@ -1,28 +1,14 @@
 var $parshiot = $('#parshiot');
 var $calendar_type = $('#calendar-type');
 
-var yomtov;
-var israel;
-
-$(function() {
-  if (yt === 'on') {
-    yomtov = 'on';
-  } else {
-    yomtov = 'off';
-  }
-})
-
-$(function() {
-  if (cal === 'Israel') {
-    israel = 'on';
-  } else {
-    israel = 'off';
-  }
-})
-
+if (cal === 'Israel'){
+  var israel = 'on'
+} else {
+  var israel = 'off'
+}
 
 var hebcal = $.getJSON(
-  'https://www.hebcal.com/hebcal/?v=1&cfg=json&year=now&month=x&s=on&maj=' + yomtov + '&i=' + israel
+  'https://www.hebcal.com/hebcal/?v=1&cfg=json&year=now&month=x&s=on&maj=' + yt + '&i=' + israel
 ).done(function(data) {
   var today = new Date();
   today.setHours(0, 0, 0, 0);
