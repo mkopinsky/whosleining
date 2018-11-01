@@ -10,7 +10,7 @@ if (cal === 'Israel'){
 
 // yt was defined in signup.html
 var hebcal = $.getJSON(
-  'https://www.hebcal.com/hebcal/?v=1&cfg=json&year=now&month=x&s=on&maj=' + yt + '&i=' + israel
+  'https://www.hebcal.com/hebcal/?v=1&cfg=json&year=now&month=x&s=on&maj=' + major + '&i=' + israel
 ).done(function(data) {
   var today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -30,7 +30,7 @@ var hebcal = $.getJSON(
 
 // disable hidden inputs for checkboxes when checked so that only the checked value gets passed to server
 $('#submit').click(function() {
-  if ($('#yom-tov').prop('checked')) {
-    $('#yom-tov-hidden').prop('disabled', true);
+  if ($('#major').prop('checked')) {
+    $('#major-hidden').prop('disabled', true);
   }
 })
