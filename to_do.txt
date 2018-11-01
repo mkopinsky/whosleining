@@ -1,5 +1,5 @@
 
-
+show past dates on list of parshiot with flask/jinja
 
 
 for production:
