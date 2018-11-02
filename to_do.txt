@@ -1,4 +1,6 @@
 
+add page for editing shul settings, and link to it from signup page
+
 show past dates on list of parshiot with flask/jinja
 
 is there a way to know (and therefore mark) which day of a regel falls on shabbos? Is that necessary?
