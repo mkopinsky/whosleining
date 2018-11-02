@@ -20,7 +20,7 @@ var hebcal = $.getJSON(
     new_date.setHours(0, 0, 0, 0);
     // if the given date is today or later, display the date
     if (new_date >= today) {
-      $parshiot.append('<span>' + item.date + ' </span><span>' + item.hebrew + '</span></br>');
+      $parshiot.append('<span>' + item.date + ' </span><span>' + item.hebrew + '</span>' + ' <a href=#>Sign up</a></br>');
     }
   })
 }).fail(function(error) {
