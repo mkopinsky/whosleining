@@ -31,11 +31,3 @@
     </div>
   </section>
 {% endblock %}
-
-{% block js %}
-  <script type='text/javascript'>
-    var major = '{{ shul.major_holidays }}';
-    var cal = '{{ shul.calendar_type }}';
-  </script>
-  <script src="{{ url_for('static', filename='signup_script.js') }}"></script>
-{% endblock %}
