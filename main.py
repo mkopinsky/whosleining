@@ -141,4 +141,5 @@ def signup(shul_id):
                 shul.weeks.append(newWeek)
                 session.add(newWeek)
                 session.commit()
-    return render_template('signup.html', shul=shul, hebcal_items=hebcal_items, today_date=today_date, datetime=datetime)
+    weeks = session.query(Weeks).filter_by(shul_id=shul.id).all()
+    return render_template('signup.html', shul=shul, weeks=weeks, today_date=today_date, datetime=datetime)
