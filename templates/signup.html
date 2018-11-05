@@ -7,14 +7,12 @@
     </div>
     <div id='parshiot'>
       <h3>Parshiot:</h3>
-      {% for week in weeks %}
-        {% if week.date.strftime('%Y-%m-%d') >= today_date.strftime('%Y-%m-%d') %}
-          <span class=col-2>{{week.date.strftime('%Y-%m-%d')}}</span>
-          <span class=col-2>{{week.parasha}}</span>
-          <a class="=col-1" data-toggle="modal" href="#signup-modal">Sign up</a>
-          <br>
-        {% endif %}
-      {% endfor %}
+{% for week in weeks %}
+  {% if week.date.strftime('%Y-%m-%d') >= today_date.strftime('%Y-%m-%d') %}
+      <span class=col-2>{{week.date.strftime('%Y-%m-%d')}}</span>
+      <span class=col-2>{{week.parasha}}</span>
+      <a class="=col-1" data-toggle="modal" href="#signup-modal">Sign up</a>
+      <br>
     </div>
   </section>
   <section>
@@ -22,7 +20,7 @@
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="modal-title">Modal title</h5>
+            <h5 class="modal-title" id="modal-title">{{week.parasha}}</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -38,4 +36,6 @@
       </div>
     </div>
   </section>
+  {% endif %}
+{% endfor %}
 {% endblock %}
