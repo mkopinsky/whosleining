@@ -1,5 +1,4 @@
 
-Note - the commit to give 'weeks' access to modal window did not work as intended, need to fix
 put in modal content (signup form etc.)
 
 add page for editing shul settings, and link to it from signup page
