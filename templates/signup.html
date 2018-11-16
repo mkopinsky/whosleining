@@ -26,10 +26,35 @@
             </button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <form action=# method='post'>
+              <div class='form-group'>
+                <!--Hidden input is here to allow flask to extract name of parasha from form data; since the signup is a modal and not its own html page, can't pass week variable to url-->
+                <input id="hidden-parasha" type="hidden" value="{{week.id}}" name="parasha"/>
+                <label for="full">Full: {{week.full}}</label>
+                <input id="full" type="checkbox" name="full"/>
+                <label for="rishon">Rishon: {{week.rishon}}</label>
+                <input id="rishon" type="checkbox" name="rishon"/>
+                <label for="sheini">Sheini: {{week.sheini}}</label>
+                <input id="sheini" type="checkbox" name="sheini"/>
+                <label for="shelishi">Shelishi: {{week.shelishi}}</label>
+                <input id="shelishi" type="checkbox" name="shelishi"/>
+                <label for="revii">Revii: {{week.revii}}</label>
+                <input id="revii" type="checkbox" name="revii"/>
+                <label for="chamishi">Chamishi: {{week.chamishi}}</label>
+                <input id="chamishi" type="checkbox" name="chamishi"/>
+                <label for="shishi">Shishi: {{week.shishi}}</label>
+                <input id="shishi" type="checkbox" name="shishi"/>
+                <label for="shevii">Shevii: {{week.shevii}}</label>
+                <input id="shevii" type="checkbox" name="shevii"/>
+                <label for="maftir">Maftir: {{week.maftir}}</label>
+                <input id="maftir" type="checkbox" name="maftir"/>
+                <label for="haftarah">Haftarah: {{week.haftarah}}</label>
+                <input id="haftarah" type="checkbox" name="haftarah"/>
+              </div>
+            </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
