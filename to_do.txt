@@ -1,5 +1,5 @@
 
-put in modal content (signup form etc.)
+fix post-method code for signup route (or maybe the problem is with the html)
 
 add page for editing shul settings, and link to it from signup page
 
