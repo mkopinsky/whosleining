@@ -119,27 +119,54 @@ def my_shuls():
 
 @app.route('/<shul_id>/signup/', methods=['GET', 'POST'])
 def signup(shul_id):
-    shul = session.query(Shuls).filter_by(id=shul_id).one()
-    israel = shul.calendar_type
-    major = shul.major_holidays
-    # Make api call to hebcal
-    hebcal = requests.get('https://www.hebcal.com/hebcal/?v=1&cfg=json&year=now&month=x&s=on&maj=' + major + '&i=' + israel)
-    hebcal_items = hebcal.json()['items']
-    # today's datetime object
-    today = datetime.datetime.now()
-    # today's date object
-    today_date = datetime.date(today.year, today.month, today.day)
+    if request.method == 'POST':
+        user = getUserInfo(login_session['user_id'])
+        parasha_id = request.form['parasha']
+        week_to_update = session.query(Weeks).filter_by(id=parasha_id).one()
+        if request.form['rishon'] == 'on':
+            week_to_update.rishon = user.name
+        if request.form['sheini'] == 'on':
+            week_to_update.sheini = user.name
+        if request.form['shelishi'] == 'on':
+            week_to_update.shelishi = user.name
+        if request.form['revii'] == 'on':
+            week_to_update.revii = user.name
+        if request.form['chamishi'] == 'on':
+            week_to_update.chamishi = user.name
+        if request.form['shishi'] == 'on':
+            week_to_update.shishi = user.name
+        if request.form['shevii'] == 'on':
+            week_to_update.shevii = user.name
+        if request.form['maftir'] == 'on':
+            week_to_update.maftir = user.name
+        if request.form['haftarah'] == 'on':
+            week_to_update.haftarah = user.name
 
-    for item in hebcal_items:
-        # convert item's date to date object
-        item_date = datetime.datetime.strptime(item['date'], '%Y-%m-%d').date()
-        if item_date >= today_date:
-            week_in_db = session.query(Weeks).filter_by(date=item_date, shul_id=shul.id).all()
-            # if that week does not yet exist for that shul, create new object
-            if not week_in_db:
-                newWeek = Weeks(date=item_date, parasha=item['hebrew'])
-                shul.weeks.append(newWeek)
-                session.add(newWeek)
-                session.commit()
-    weeks = session.query(Weeks).filter_by(shul_id=shul.id).order_by('date').all()
-    return render_template('signup.html', shul=shul, weeks=weeks, today_date=today_date, datetime=datetime)
+        session.add(week_to_update)
+        session.commit()
+
+    else:
+        shul = session.query(Shuls).filter_by(id=shul_id).one()
+        israel = shul.calendar_type
+        major = shul.major_holidays
+        # Make api call to hebcal
+        hebcal = requests.get('https://www.hebcal.com/hebcal/?v=1&cfg=json&year=now&month=x&s=on&maj=' + major + '&i=' + israel)
+        hebcal_items = hebcal.json()['items']
+        # today's datetime object
+        today = datetime.datetime.now()
+        # today's date object
+        today_date = datetime.date(today.year, today.month, today.day)
+
+        for item in hebcal_items:
+            # convert item's date to date object
+            item_date = datetime.datetime.strptime(item['date'], '%Y-%m-%d').date()
+            if item_date >= today_date:
+                week_in_db = session.query(Weeks).filter_by(date=item_date, shul_id=shul.id).all()
+                # if that week does not yet exist for that shul, create new object
+                if not week_in_db:
+                    newWeek = Weeks(date=item_date, parasha=item['hebrew'])
+                    shul.weeks.append(newWeek)
+                    session.add(newWeek)
+                    session.commit()
+        weeks = session.query(Weeks).filter_by(shul_id=shul.id).order_by('date').all()
+        return render_template('signup.html', shul=shul, weeks=weeks, today_date=today_date, datetime=datetime)
