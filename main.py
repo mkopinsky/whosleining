@@ -144,6 +144,7 @@ def signup(shul_id):
 
         session.add(week_to_update)
         session.commit()
+        return redirect(url_for('signup', shul_id=shul_id))
 
     else:
         shul = session.query(Shuls).filter_by(id=shul_id).one()
