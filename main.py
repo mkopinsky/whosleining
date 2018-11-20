@@ -123,23 +123,23 @@ def signup(shul_id):
         user = getUserInfo(login_session['user_id'])
         parasha_id = request.form['parasha']
         week_to_update = session.query(Weeks).filter_by(id=parasha_id).one()
-        if request.form['rishon'] == 'on':
+        if 'rishon' in request.form:
             week_to_update.rishon = user.name
-        if request.form['sheini'] == 'on':
+        if 'sheini' in request.form:
             week_to_update.sheini = user.name
-        if request.form['shelishi'] == 'on':
+        if 'shelishi' in request.form:
             week_to_update.shelishi = user.name
-        if request.form['revii'] == 'on':
+        if 'revii' in request.form:
             week_to_update.revii = user.name
-        if request.form['chamishi'] == 'on':
+        if 'chamishi' in request.form:
             week_to_update.chamishi = user.name
-        if request.form['shishi'] == 'on':
+        if 'shishi' in request.form:
             week_to_update.shishi = user.name
-        if request.form['shevii'] == 'on':
+        if 'shevii' in request.form:
             week_to_update.shevii = user.name
-        if request.form['maftir'] == 'on':
+        if 'maftir' in request.form:
             week_to_update.maftir = user.name
-        if request.form['haftarah'] == 'on':
+        if 'haftarah' in request.form:
             week_to_update.haftarah = user.name
 
         session.add(week_to_update)
