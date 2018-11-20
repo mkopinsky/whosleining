@@ -1,5 +1,7 @@
 
-fix post-method code for signup route (or maybe the problem is with the html)
+signup route:
+	add logic for "full" option
+	add logic to remove someone who signed up but who no longer wants to do it
 
 add page for editing shul settings, and link to it from signup page
 
